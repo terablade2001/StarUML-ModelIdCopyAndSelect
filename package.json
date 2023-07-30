@@ -1,0 +1,17 @@
+{
+  "name": "terablade2001.modelidcopyandselect",
+  "title": "Model Id : Copy And Select",
+  "description": "Copy and Select models by their Id",
+  "homepage": "https://github.com/terablade2001/StarUML-ModelIdCopyAndSelect",
+  "version": "1.0.0",
+  "keywords": ["Model", "Id", "Copy", "Search", "Select", "Find"],
+  "author": {
+    "name": "Vasileios Pothos",
+    "email": "terablade2001@yahoo.gr",
+    "url": "https://github.com/terablade2001"
+  },
+  "license": "MIT",
+  "engines": {
+    "staruml": ">=5.1.0"
+  }
+}

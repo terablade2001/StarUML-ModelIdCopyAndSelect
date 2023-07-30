@@ -1,0 +1,25 @@
+{
+  "menu": [
+    {
+      "id": "tools",
+      "submenu": [
+        {
+          "label": "Model Id : Copy And Select",
+          "id": "tools.ModelIdCopyAndSelect",
+          "submenu": [
+            {
+              "label": "Copy Model's Id", 
+              "id": "tool.ModelIdCopyAndSelect.copyModelId",
+              "command": "ModelIdCopyAndSelect:copyModelId"
+            },
+            {
+              "label": "Select Model by Id", 
+              "id": "tool.ModelIdCopyAndSelect.selectModelById",
+              "command": "ModelIdCopyAndSelect:selectModelById"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
