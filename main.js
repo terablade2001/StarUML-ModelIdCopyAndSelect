@@ -44,7 +44,7 @@ function copyModelId () {
 function selectModelById () {
   readFromClipboard()
   let modelById = app.repository.get(copiedElementId)
-  if (modelById == "undefined") {
+  if (typeof(modelById) == "undefined") {
     app.toast.info("ERROR: ** Model with id [ "+copiedElementId+" ] was not found! **")
     return
   }
