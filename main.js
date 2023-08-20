@@ -1,6 +1,6 @@
 let copiedElementId
 
-function writeToClipboard(text) {
+function writeToClipboard(text) { // ►[AAAAAAGKEmqT4myHQr8=]
   const textarea = document.createElement('textarea');
   textarea.value = text;
   document.body.appendChild(textarea);
@@ -17,7 +17,7 @@ function writeToClipboard(text) {
   return 0;
 }
 
-function readFromClipboard() {
+function readFromClipboard() { // ►[AAAAAAGKEm0onmzB6eY=]
   const textarea = document.createElement('textarea');
   textarea.value = "";
   document.body.appendChild(textarea);
@@ -37,43 +37,43 @@ function readFromClipboard() {
 }
 
 
-function copyModelId () {
-  let selected = app.selections.getSelected();
-  if (typeof(selected) == 'undefined') {
-    window.alert('No element has been selected!');
+function copyModelId () { // ►[AAAAAAGKEmXE1WxPrIQ=]
+  let selected = app.selections.getSelected(); // ►[AAAAAAGKEmZnCmxi5z8=]
+  if (typeof(selected) == 'undefined') { // ►[AAAAAAGKEmarnGxvsHM=]
+    window.alert('No element has been selected!'); // ►[AAAAAAGKEmdIOWx7WNM=]
     return -1;
   }
   
-  var err = writeToClipboard(selected._id);
-  if (err != 0) {
-    app.toast.error("Failed to copy selected id to clipboard!");
+  var err = writeToClipboard(selected._id); // ►[AAAAAAGKEmqT4myHQr8=]
+  if (err != 0) { // ►[AAAAAAGKEmuXOmylTXQ=]
+      app.toast.error("Failed to copy selected id to clipboard!"); // ►[AAAAAAGKEmdIOWx7WNM=]
     return -1;
   }
-  app.toast.info("Id [ "+selected._id+" ] copied to clipboard.")
+  app.toast.info("Id [ "+selected._id+" ] copied to clipboard.") // ►[AAAAAAGKEnPloW2p+So=]
   return 0;
 }
 
-function selectModelById () {
-  var err = readFromClipboard();
-  if (err != 0) {
-    app.toast.error("Failed to read selected id from clipboard!");
+function selectModelById () { // ►[AAAAAAGKEmXyvmxY9W0=]
+  var err = readFromClipboard(); // ►[AAAAAAGKEm0onmzB6eY=]
+  if (err != 0) { // ►[AAAAAAGKEm3EK2zQQ6M=]
+    app.toast.error("Failed to read selected id from clipboard!"); // ►[AAAAAAGKEoQA+24U5RA=]
     return -1;
   }
-  let modelById = app.repository.get(copiedElementId)
-  if (typeof(modelById) == "undefined") {
-    app.toast.error("Model with id [ "+copiedElementId+" ] was not found!")
+  let modelById = app.repository.get(copiedElementId) // ►[AAAAAAGKEoTEIm4j0DE=]
+  if (typeof(modelById) == "undefined") { // ►[AAAAAAGKEoYutG4w/SE=]
+    app.toast.error("Model with id [ "+copiedElementId+" ] was not found!") // ►[AAAAAAGKEoQA+24U5RA=]
     return -1;
   }
 
-  app.selections.deselectAll();
-  app.selections.selectModel(modelById);
-  app.toast.info("► Model with id [ "+modelById._id+ "] selected.");
-  app.modelExplorer.select(modelById, true);
+  app.selections.deselectAll(); // ►[AAAAAAGKEobrs249/2A=]
+  app.selections.selectModel(modelById); // ►[AAAAAAGKEofCcG5YpqI=]
+  app.modelExplorer.select(modelById, true); // ►[AAAAAAGKEohwfW5j31o=]
+  app.toast.info("Model with id [ "+modelById._id+ "] selected."); // ►[AAAAAAGKEnPloW2p+So=]
   return 0;
 }
 
 
-function init () {
+function init () { // ► [AAAAAAGKEmNUc2wtwRk=]
   copiedElementId = ""
   app.commands.register('ModelIdCopyAndSelect:copyModelId', copyModelId)
   app.commands.register('ModelIdCopyAndSelect:selectModelById', selectModelById)
