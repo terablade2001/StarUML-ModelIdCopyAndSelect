@@ -10,8 +10,11 @@ function writeToClipboard(text) {
     document.execCommand('copy');
   } catch (err) {
     console.error('Unable to copy text to clipboard:', err);
+    document.body.removeChild(textarea);
+    return -1;
   }
   document.body.removeChild(textarea);
+  return 0;
 }
 
 function readFromClipboard() {
@@ -24,34 +27,48 @@ function readFromClipboard() {
     document.execCommand('paste');
   } catch (err) {
     console.error('Unable to copy text from clipboard:', err);
+    copiedElementId=''    
+    document.body.removeChild(textarea);
+    return -1;
   }
-  copiedElementId = textarea.value
+  copiedElementId = textarea.value;
   document.body.removeChild(textarea);
+  return 0;
 }
 
 
 function copyModelId () {
-  let selected = app.selections.getSelected()
+  let selected = app.selections.getSelected();
   if (typeof(selected) == 'undefined') {
-    window.alert('No element has been selected!')
-    return
+    window.alert('No element has been selected!');
+    return -1;
   }
   
-  writeToClipboard(selected._id)
+  var err = writeToClipboard(selected._id);
+  if (err != 0) {
+    app.toast.error("Failed to copy selected id to clipboard!");
+    return -1;
+  }
   app.toast.info("Id [ "+selected._id+" ] copied to clipboard.")
+  return 0;
 }
 
 function selectModelById () {
-  readFromClipboard()
+  var err = readFromClipboard();
+  if (err != 0) {
+    app.toast.error("Failed to read selected id from clipboard!");
+    return -1;
+  }
   let modelById = app.repository.get(copiedElementId)
   if (typeof(modelById) == "undefined") {
-    app.toast.info("ERROR: ** Model with id [ "+copiedElementId+" ] was not found! **")
-    return
+    app.toast.error("Model with id [ "+copiedElementId+" ] was not found!")
+    return -1;
   }
 
   app.selections.deselectAll()  
   app.selections.selectModel(modelById)
   app.toast.info("► Model with id [ "+modelById._id+ "] selected.")
+  return 0;
 }
 
 

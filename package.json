@@ -3,7 +3,7 @@
   "title": "Model Id : Copy And Select",
   "description": "Copy and Select models by their Id",
   "homepage": "https://github.com/terablade2001/StarUML-ModelIdCopyAndSelect",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "keywords": ["Model", "Id", "Copy", "Search", "Select", "Find"],
   "author": {
     "name": "Vasileios Pothos",
