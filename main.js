@@ -27,7 +27,7 @@ function readFromClipboard() {
     document.execCommand('paste');
   } catch (err) {
     console.error('Unable to copy text from clipboard:', err);
-    copiedElementId=''    
+    copiedElementId='';
     document.body.removeChild(textarea);
     return -1;
   }
@@ -65,9 +65,10 @@ function selectModelById () {
     return -1;
   }
 
-  app.selections.deselectAll()  
-  app.selections.selectModel(modelById)
-  app.toast.info("► Model with id [ "+modelById._id+ "] selected.")
+  app.selections.deselectAll();
+  app.selections.selectModel(modelById);
+  app.toast.info("► Model with id [ "+modelById._id+ "] selected.");
+  app.modelExplorer.select(modelById, true);
   return 0;
 }
 
